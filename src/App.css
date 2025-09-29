@@ -1,0 +1,83 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.responsive-padding {
+  padding: 8px 15px;
+}
+
+@media (min-width: 576px) {
+  .responsive-padding {
+    padding: 12px 35px;
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-padding {
+    padding: 15px 50px;
+  }
+}
+
+@media (min-width: 992px) {
+  .responsive-padding {
+    padding: 15px 100px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .responsive-padding {
+    padding: 15px 150px;
+  }
+}
+
+.movie-page-heading {
+  font-family: 'Roboto';
+  @media (max-width: 575px) {
+    font-size: 17px;
+  }
+}
+
+/* No Data view styles */
+
+.no-data-view-container {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.no-data-view-img {
+  width: 400px;
+  border-radius: 10px;
+
+  @media (max-width: 575px) {
+    width: 250px;
+  }
+}
+
+.no-data-view-heading {
+  font-size: 25px;
+}
+
+.no-data-view-retry-btn {
+  padding: 5px 10px;
+  border-radius: 4px;
+}
