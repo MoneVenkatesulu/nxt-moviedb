@@ -1,5 +1,3 @@
-import {useLocation} from 'react-router-dom'
-
 import {statusConstants, useFetchMovies} from '../../hooks/useFetchMovies'
 import LoadingView from '../LoadingView'
 import FailureView from '../FailureView'
@@ -10,20 +8,6 @@ import './index.css'
 
 const MoviesListPage = ({movieCategory}) => {
   const {apiResponse, fetchMovies} = useFetchMovies(movieCategory)
-  const location = useLocation()
-
-  const pageHeading = () => {
-    switch (location.pathname) {
-      case '/':
-        return 'Popular'
-      case '/top-rated':
-        return 'Top Rated'
-      case '/upcoming':
-        return 'Upcoming'
-      default:
-        return null
-    }
-  }
 
   const successView = () =>
     apiResponse.data.results.length === 0 ? (
