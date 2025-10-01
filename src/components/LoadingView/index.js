@@ -1,6 +1,8 @@
+import Loader from 'react-loader-spinner'
+
 const LoadingView = () => (
   <div className="no-data-view-container">
-    <h1 className="no-data-view-heading">Loading...</h1>
+    <Loader type="TailSpin" height={80} width={80} />
   </div>
 )
 
