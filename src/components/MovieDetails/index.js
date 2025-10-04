@@ -34,27 +34,31 @@ const MovieDetails = () => {
 
         <div className="movie-details">
           <div className="movie-details-content">
-            <h5>Title: {title}</h5>
+            <h4 className="movie-details-strong-text">Title: {title}</h4>
             <p>
-              <strong>Ratings: </strong>
+              <strong className="movie-details-strong-text">Ratings: </strong>
               {Math.floor(ratings * 10) / 10} / 10
             </p>
             <p>
-              <strong>Duration: </strong>
+              <strong className="movie-details-strong-text">Duration: </strong>
               {durationHours !== 0 && <span>{durationHours}h </span>}
 
               {durationMinutes !== 0 && <span>{durationMinutes}m</span>}
             </p>
             <p>
-              <strong>All Genres: </strong>
+              <strong className="movie-details-strong-text">
+                All Genres:{' '}
+              </strong>
               {allGenres}
             </p>
             <p>
-              <strong>Realease Date: </strong>
+              <strong className="movie-details-strong-text">
+                Realease Date:{' '}
+              </strong>
               {releaseDate}
             </p>
             <p className="movie-details-description">
-              <strong>Overview: </strong>
+              <strong className="movie-details-strong-text">Overview: </strong>
               {overview}
             </p>
           </div>

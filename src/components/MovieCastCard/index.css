@@ -1,5 +1,7 @@
 .movie-cast-card {
-  background-color: #f6f6f6;
+  background-color: #fff;
+  color: #9a9a9a;
+  font-family: 'Roboto';
   width: 45%;
   max-width: 160px;
   border-radius: 5px;
@@ -16,6 +18,7 @@
 
 .movie-cast-name {
   text-align: center;
+  color: #2d832d;
 }
 
 .movie-cast-img {

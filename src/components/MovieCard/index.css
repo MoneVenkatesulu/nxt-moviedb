@@ -1,15 +1,16 @@
 .movie-card {
-  background-color: #f6f6f6;
+  background-color: #fff;
   width: 45%;
   max-width: 160px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 5px;
+  gap: 10px;
   padding: 10px;
 
   @media (max-width: 575px) {
+    gap: 5px;
     padding: 5px;
   }
 }
@@ -22,4 +23,23 @@
 .movie-card-view-details {
   align-self: center;
   margin-top: auto;
+}
+
+.movie-card-title {
+  color: #007f00;
+  font-family: 'Roboto';
+}
+
+.movie-card-ratings {
+  color: #696969;
+  font-family: 'Roboto';
+}
+
+.movie-card-btn {
+  border: none;
+  background-color: #beffbe;
+  color: #202020;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
 }

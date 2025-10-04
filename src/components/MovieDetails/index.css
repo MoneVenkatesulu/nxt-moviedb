@@ -3,13 +3,18 @@
 }
 
 .movie-details {
+  background-color: #fff;
+  color: #7a7a7a;
   display: flex;
   gap: 10px;
+  border-radius: 5px;
   margin: 25px 0px;
+  padding: 10px;
 
   @media (max-width: 575px) {
     flex-direction: column;
     margin: 15px 0px;
+    padding: 5px;
   }
 }
 
@@ -19,12 +24,18 @@
   gap: 5px;
 }
 
+.movie-details-strong-text {
+  color: #007f00;
+  font-family: 'Roboto';
+}
+
 .movie-details-description {
   text-align: justify;
 }
 
 .movie-details-img {
   max-width: 200px;
+  border-radius: 5px;
 
   @media (max-width: 575px) {
     max-width: 150px;

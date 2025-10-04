@@ -12,10 +12,14 @@ const MovieCard = ({movie}) => {
         alt={`Movie - ${title}`}
         className="movie-card-img"
       />
-      <h5>{title}</h5>
-      <p>Ratings: {Math.floor(ratings * 10) / 10} / 10</p>
+      <h5 className="movie-card-title">{title}</h5>
+      <p className="movie-card-ratings">
+        Ratings: {Math.floor(ratings * 10) / 10} / 10
+      </p>
       <Link to={`/movie/${id}`} className="movie-card-view-details">
-        <button type="button">View Details</button>
+        <button type="button" className="movie-card-btn">
+          View Details
+        </button>
       </Link>
     </li>
   )

@@ -16,6 +16,7 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #ecffec;
 }
 
 .responsive-padding {
@@ -47,6 +48,7 @@ body {
 }
 
 .movie-page-heading {
+  color: #007f00;
   font-family: 'Roboto';
   @media (max-width: 575px) {
     font-size: 17px;

@@ -14,14 +14,19 @@ const Header = () => {
   return (
     <nav className="nav-contianer responsive-padding">
       <div className="header-title-link-container">
-        <h1 className="app-title">movieDB</h1>
+        <Link to="/" className="app-title-link">
+          <h1 className="app-title">movieDB</h1>
+        </Link>
 
         <ul className="header-link-container">
           <li>
             <Link
               to="/"
               className="header-link-item"
-              style={{fontWeight: `${pathName === '/' ? 'bold' : 'normal'}`}}
+              style={{
+                fontWeight: `${pathName === '/' ? 'bold' : 'normal'}`,
+                color: `${pathName === '/' ? '#00bb00' : '#00ff00'}`,
+              }}
             >
               Popular
             </Link>
@@ -32,6 +37,7 @@ const Header = () => {
               className="header-link-item"
               style={{
                 fontWeight: `${pathName === '/top-rated' ? 'bold' : 'normal'}`,
+                color: `${pathName === '/top-rated' ? '#00bb00' : '#00ff00'}`,
               }}
             >
               Top Rated
@@ -43,6 +49,7 @@ const Header = () => {
               className="header-link-item"
               style={{
                 fontWeight: `${pathName === '/upcoming' ? 'bold' : 'normal'}`,
+                color: `${pathName === '/upcoming' ? '#00bb00' : '#00ff00'}`,
               }}
             >
               Upcoming

@@ -24,10 +24,18 @@
   }
 }
 
+.app-title-link {
+  text-decoration: none;
+}
+
 .app-title {
   font-family: 'Roboto';
+  color: #00bb00;
+  text-shadow: 2px 3px #202020;
+
   @media (max-width: 575px) {
     font-size: 20px;
+    text-shadow: 1px 2px #202020;
   }
   @media (max-width: 767px) {
     font-size: 25px;
@@ -66,7 +74,7 @@
   height: 30px;
   outline: none;
   padding: 5px;
-  border: 1px solid #202020;
+  border: 1px solid #bbbbbb;
   border-radius: 3px 0 0 3px;
 
   @media (max-width: 700px) {
@@ -78,8 +86,10 @@
 
 .search-btn {
   height: 30px;
-  border: 1px solid #202020;
   border-radius: 0 3px 3px 0;
+  border: 1px solid #bbbbbb;
+  background-color: #8fff8f;
+  color: #202020;
 
   @media (max-width: 700px) {
     height: 25px;
