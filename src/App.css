@@ -77,9 +77,16 @@ body {
 
 .no-data-view-heading {
   font-size: 25px;
+  color: #006800;
+}
+
+.no-data-view-description {
+  color: #757575;
 }
 
 .no-data-view-retry-btn {
   padding: 5px 10px;
   border-radius: 4px;
+  background-color: #a8ffa8;
+  border: 1px solid #202020;
 }

@@ -6,7 +6,9 @@ const NoMoviesView = () => (
       className="no-data-view-img"
     />
     <h1 className="no-data-view-heading">No Videos Availabe</h1>
-    <p>Please try again with a different movie name</p>
+    <p className="no-data-view-description">
+      Please try again with a different movie name
+    </p>
   </div>
 )
 
