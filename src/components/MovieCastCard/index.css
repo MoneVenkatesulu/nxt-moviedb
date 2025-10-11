@@ -1,5 +1,6 @@
 .movie-cast-card {
   background-color: #fff;
+  box-shadow: 0 1px 6px #e1e1e1;
   color: #9a9a9a;
   font-family: 'Roboto';
   width: 45%;

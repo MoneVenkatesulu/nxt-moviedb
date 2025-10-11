@@ -20,30 +20,30 @@ body {
 }
 
 .responsive-padding {
-  padding: 8px 15px;
+  padding: 0 15px;
 }
 
 @media (min-width: 576px) {
   .responsive-padding {
-    padding: 12px 35px;
+    padding: 0 35px;
   }
 }
 
 @media (min-width: 768px) {
   .responsive-padding {
-    padding: 15px 50px;
+    padding: 0 50px;
   }
 }
 
 @media (min-width: 992px) {
   .responsive-padding {
-    padding: 15px 100px;
+    padding: 0 100px;
   }
 }
 
 @media (min-width: 1200px) {
   .responsive-padding {
-    padding: 15px 150px;
+    padding: 0 150px;
   }
 }
 

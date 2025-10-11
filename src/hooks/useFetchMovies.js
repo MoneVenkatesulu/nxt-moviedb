@@ -16,7 +16,7 @@ export const useFetchMovies = () => {
   })
   const location = useLocation()
   const {id} = useParams()
-  const {searchedMovie} = useContext(SearchedMovieContext)
+  const {searchedMovie, currentPage} = useContext(SearchedMovieContext)
 
   const fetchMovies = useCallback(async () => {
     setApiResponse({
@@ -38,12 +38,12 @@ export const useFetchMovies = () => {
         movieType = 'upcoming'
       }
 
-      url = `https://api.themoviedb.org/3/movie/${movieType}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=1`
+      url = `https://api.themoviedb.org/3/movie/${movieType}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&page=${currentPage}`
     } else if (pathName.startsWith('/movie/')) {
       url = `https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
       castUrl = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${process.env.REACT_APP_API_KEY}&language=en-US`
     } else if (pathName === '/searched-movies') {
-      url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchedMovie}&page=1`
+      url = `https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_API_KEY}&language=en-US&query=${searchedMovie}&page=${currentPage}`
     }
 
     try {
@@ -80,7 +80,7 @@ export const useFetchMovies = () => {
         status: statusConstants.failure,
       }))
     }
-  }, [location.pathname, id, searchedMovie])
+  }, [location.pathname, id, searchedMovie, currentPage])
 
   useEffect(() => {
     fetchMovies()

@@ -1,0 +1,31 @@
+.pagination-content {
+  align-self: flex-end;
+  padding: 10px 0 15px 0;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+
+  @media (max-width: 575px) {
+    gap: 15px;
+  }
+  @media (max-width: 700px) {
+    align-self: center;
+  }
+}
+
+.pagination-btns {
+  border: 1px solid #202020;
+  border-radius: 2px;
+  background-color: #fff;
+  padding: 5px 15px;
+  cursor: pointer;
+
+  @media (max-width: 575px) {
+    padding: 3px 10px;
+  }
+}
+
+.pagination-current-page {
+  font-weight: bold;
+  font-family: 'Roboto';
+}

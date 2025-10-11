@@ -1,10 +1,16 @@
-import {Link} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 import './index.css'
 
 const MovieCard = ({movie}) => {
+  const history = useHistory()
   const {id, title, poster_path: img, vote_average: ratings} = movie
   const fullImgPath = `https://image.tmdb.org/t/p/w500${img}`
+
+  const onClickViewDetails = () => {
+    history.push(`/movie/${id}`)
+  }
+
   return (
     <li className="movie-card">
       <img
@@ -16,11 +22,13 @@ const MovieCard = ({movie}) => {
       <p className="movie-card-ratings">
         Ratings: {Math.floor(ratings * 10) / 10} / 10
       </p>
-      <Link to={`/movie/${id}`} className="movie-card-view-details">
-        <button type="button" className="movie-card-btn">
-          View Details
-        </button>
-      </Link>
+      <button
+        type="button"
+        className="movie-card-view-details-btn"
+        onClick={onClickViewDetails}
+      >
+        View Details
+      </button>
     </li>
   )
 }

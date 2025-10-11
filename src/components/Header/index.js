@@ -1,4 +1,4 @@
-import {Link, useLocation} from 'react-router-dom'
+import {Link, useLocation, useHistory} from 'react-router-dom'
 import {useState, useContext} from 'react'
 
 import SearchedMovieContext from '../../context/SearchedMovieContext'
@@ -8,8 +8,15 @@ import './index.css'
 const Header = () => {
   const location = useLocation()
   const [userSearch, setUserSearch] = useState('')
-  const {updateSearchedMovie} = useContext(SearchedMovieContext)
+  const {updateSearchedMovie, changePage} = useContext(SearchedMovieContext)
   const pathName = location.pathname
+  const history = useHistory()
+
+  const onClickSearchIcon = () => {
+    updateSearchedMovie(userSearch)
+    changePage(1)
+    history.push('/searched-movies')
+  }
 
   return (
     <nav className="nav-contianer responsive-padding">
@@ -61,21 +68,20 @@ const Header = () => {
       <div className="searchbar-container">
         <input
           type="text"
+          name="userSearch"
           placeholder="Movie Name"
           className="searchbar"
           value={userSearch}
           onChange={e => setUserSearch(e.target.value)}
           onKeyDown={e => e.key === 'Enter' && updateSearchedMovie(userSearch)}
         />
-        <Link to="/searched-movies">
-          <button
-            type="button"
-            onClick={() => updateSearchedMovie(userSearch)}
-            className="search-btn"
-          >
-            Search
-          </button>
-        </Link>
+        <button
+          type="button"
+          className="search-btn"
+          onClick={onClickSearchIcon}
+        >
+          Search
+        </button>
       </div>
     </nav>
   )
