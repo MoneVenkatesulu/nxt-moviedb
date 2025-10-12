@@ -29,6 +29,8 @@ const Header = () => {
           <li>
             <Link
               to="/"
+              data-testid="Popular"
+              onClick={() => changePage(1)}
               className="header-link-item"
               style={{
                 fontWeight: `${pathName === '/' ? 'bold' : 'normal'}`,
@@ -41,6 +43,8 @@ const Header = () => {
           <li>
             <Link
               to="/top-rated"
+              data-testid="Top Rated"
+              onClick={() => changePage(1)}
               className="header-link-item"
               style={{
                 fontWeight: `${pathName === '/top-rated' ? 'bold' : 'normal'}`,
@@ -53,6 +57,8 @@ const Header = () => {
           <li>
             <Link
               to="/upcoming"
+              data-testid="Upcoming"
+              onClick={() => changePage(1)}
               className="header-link-item"
               style={{
                 fontWeight: `${pathName === '/upcoming' ? 'bold' : 'normal'}`,
