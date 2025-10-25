@@ -5,13 +5,12 @@ import SearchedMovieContext from '../../context/SearchedMovieContext'
 import './index.css'
 
 const Pagination = () => {
-  const {currentPage, changePage} = useContext(SearchedMovieContext)
+  const {currentPage, changePage, totalPages} = useContext(SearchedMovieContext)
 
   return (
     <div className="pagination-content">
       <button
         type="button"
-        aria-label="Prev"
         data-testid="Prev button"
         className="pagination-btns"
         onClick={() => changePage(currentPage - 1)}
@@ -26,11 +25,10 @@ const Pagination = () => {
 
       <button
         type="button"
-        aria-label="Next"
         data-testid="Next button"
         className="pagination-btns"
         onClick={() => changePage(currentPage + 1)}
-        disabled={currentPage === 500}
+        disabled={currentPage === totalPages}
       >
         Next
       </button>

@@ -5,6 +5,8 @@ const SearchedMovieContext = React.createContext({
   updateSearchedMovie: () => {},
   currentPage: 1,
   changePage: () => {},
+  totalPages: 1,
+  updateTotalPages: () => {},
 })
 
 export default SearchedMovieContext

@@ -16,7 +16,9 @@ export const useFetchMovies = () => {
   })
   const location = useLocation()
   const {id} = useParams()
-  const {searchedMovie, currentPage} = useContext(SearchedMovieContext)
+  const {searchedMovie, currentPage, updateTotalPages} = useContext(
+    SearchedMovieContext,
+  )
 
   const fetchMovies = useCallback(async () => {
     setApiResponse({
@@ -71,6 +73,10 @@ export const useFetchMovies = () => {
           status: statusConstants.success,
           data: movieData,
         })
+      }
+
+      if (updateTotalPages && movieData.total_pages) {
+        updateTotalPages(movieData.total_pages)
       }
     } catch (e) {
       console.log(`Error status code: ${e.message}`)

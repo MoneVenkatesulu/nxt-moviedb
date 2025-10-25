@@ -11,10 +11,13 @@ import './App.css'
 const App = () => {
   const [searchedMovie, setSearchedMovie] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(1)
 
   const updateSearchedMovie = name => setSearchedMovie(name)
 
   const changePage = num => setCurrentPage(num)
+
+  const updateTotalPages = pages => setTotalPages(pages)
 
   return (
     <div className="app-container">
@@ -24,6 +27,8 @@ const App = () => {
           updateSearchedMovie,
           currentPage,
           changePage,
+          totalPages,
+          updateTotalPages,
         }}
       >
         <Header />
