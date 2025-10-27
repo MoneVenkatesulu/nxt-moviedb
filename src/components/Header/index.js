@@ -12,10 +12,15 @@ const Header = () => {
   const pathName = location.pathname
   const history = useHistory()
 
+  const onTabChange = () => {
+    setUserSearch('')
+    changePage(1)
+  }
+
   const onClickSearchIcon = () => {
     updateSearchedMovie(userSearch)
     changePage(1)
-    history.push('/searched-movies')
+    history.push('/search')
   }
 
   return (
@@ -30,7 +35,7 @@ const Header = () => {
             <Link
               to="/"
               data-testid="Popular"
-              onClick={() => changePage(1)}
+              onClick={onTabChange}
               className="header-link-item"
               style={{
                 fontWeight: `${pathName === '/' ? 'bold' : 'normal'}`,
@@ -44,7 +49,7 @@ const Header = () => {
             <Link
               to="/top-rated"
               data-testid="Top Rated"
-              onClick={() => changePage(1)}
+              onClick={onTabChange}
               className="header-link-item"
               style={{
                 fontWeight: `${pathName === '/top-rated' ? 'bold' : 'normal'}`,
@@ -58,7 +63,7 @@ const Header = () => {
             <Link
               to="/upcoming"
               data-testid="Upcoming"
-              onClick={() => changePage(1)}
+              onClick={onTabChange}
               className="header-link-item"
               style={{
                 fontWeight: `${pathName === '/upcoming' ? 'bold' : 'normal'}`,

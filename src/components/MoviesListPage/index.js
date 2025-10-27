@@ -7,8 +7,8 @@ import NoMoviesView from '../NoMoviesView'
 
 import './index.css'
 
-const MoviesListPage = () => {
-  const {apiResponse, fetchMovies} = useFetchMovies()
+const MoviesListPage = ({type}) => {
+  const {apiResponse, fetchMovies} = useFetchMovies(type)
 
   const successView = () =>
     apiResponse.data.results.length === 0 ? (

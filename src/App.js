@@ -34,10 +34,26 @@ const App = () => {
         <Header />
 
         <Switch>
-          <Route exact path="/" component={MoviesListPage} />
-          <Route exact path="/top-rated" component={MoviesListPage} />
-          <Route exact path="/upcoming" component={MoviesListPage} />
-          <Route exact path="/searched-movies" component={MoviesListPage} />
+          <Route
+            exact
+            path="/"
+            render={() => <MoviesListPage type="popular" />}
+          />
+          <Route
+            exact
+            path="/top-rated"
+            render={() => <MoviesListPage type="top_rated" />}
+          />
+          <Route
+            exact
+            path="/upcoming"
+            render={() => <MoviesListPage type="upcoming" />}
+          />
+          <Route
+            exact
+            path="/search"
+            render={() => <MoviesListPage type="search" />}
+          />
           <Route exact path="/movie/:id" component={MovieDetails} />
         </Switch>
       </SearchedMovieContext.Provider>
