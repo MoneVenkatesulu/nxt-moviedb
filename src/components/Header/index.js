@@ -1,26 +1,22 @@
 import {Link, useLocation, useHistory} from 'react-router-dom'
-import {useState, useContext} from 'react'
-
-import SearchedMovieContext from '../../context/SearchedMovieContext'
-
+import {useState} from 'react'
 import './index.css'
 
 const Header = () => {
   const location = useLocation()
-  const [userSearch, setUserSearch] = useState('')
-  const {updateSearchedMovie, changePage} = useContext(SearchedMovieContext)
-  const pathName = location.pathname
   const history = useHistory()
+  const [userSearch, setUserSearch] = useState('')
+  const pathName = location.pathname
 
   const onTabChange = () => {
     setUserSearch('')
-    changePage(1)
   }
 
   const onClickSearchIcon = () => {
-    updateSearchedMovie(userSearch)
-    changePage(1)
-    history.push('/search')
+    if (userSearch.trim() === '') return
+
+    const encodedQuery = encodeURIComponent(userSearch)
+    history.push(`/search?query=${encodedQuery}&page=1`)
   }
 
   return (
@@ -34,12 +30,11 @@ const Header = () => {
           <li>
             <Link
               to="/"
-              data-testid="Popular"
               onClick={onTabChange}
               className="header-link-item"
               style={{
-                fontWeight: `${pathName === '/' ? 'bold' : 'normal'}`,
-                color: `${pathName === '/' ? '#00bb00' : '#00ff00'}`,
+                fontWeight: pathName === '/' ? 'bold' : 'normal',
+                color: pathName === '/' ? '#00bb00' : '#00ff00',
               }}
             >
               Popular
@@ -48,12 +43,11 @@ const Header = () => {
           <li>
             <Link
               to="/top-rated"
-              data-testid="Top Rated"
               onClick={onTabChange}
               className="header-link-item"
               style={{
-                fontWeight: `${pathName === '/top-rated' ? 'bold' : 'normal'}`,
-                color: `${pathName === '/top-rated' ? '#00bb00' : '#00ff00'}`,
+                fontWeight: pathName === '/top-rated' ? 'bold' : 'normal',
+                color: pathName === '/top-rated' ? '#00bb00' : '#00ff00',
               }}
             >
               Top Rated
@@ -62,12 +56,11 @@ const Header = () => {
           <li>
             <Link
               to="/upcoming"
-              data-testid="Upcoming"
               onClick={onTabChange}
               className="header-link-item"
               style={{
-                fontWeight: `${pathName === '/upcoming' ? 'bold' : 'normal'}`,
-                color: `${pathName === '/upcoming' ? '#00bb00' : '#00ff00'}`,
+                fontWeight: pathName === '/upcoming' ? 'bold' : 'normal',
+                color: pathName === '/upcoming' ? '#00bb00' : '#00ff00',
               }}
             >
               Upcoming
@@ -79,12 +72,10 @@ const Header = () => {
       <div className="searchbar-container">
         <input
           type="text"
-          name="userSearch"
           placeholder="Movie Name"
           className="searchbar"
           value={userSearch}
           onChange={e => setUserSearch(e.target.value)}
-          onKeyDown={e => e.key === 'Enter' && updateSearchedMovie(userSearch)}
         />
         <button
           type="button"
@@ -97,4 +88,5 @@ const Header = () => {
     </nav>
   )
 }
+
 export default Header

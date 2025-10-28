@@ -1,7 +1,5 @@
-import {useState, useEffect, useCallback, useContext} from 'react'
-import {useParams} from 'react-router-dom'
-
-import SearchedMovieContext from '../context/SearchedMovieContext'
+import {useState, useEffect, useCallback} from 'react'
+import {useParams, useLocation} from 'react-router-dom'
 
 export const statusConstants = {
   inProgress: 'IN_PROGRESS',
@@ -11,25 +9,23 @@ export const statusConstants = {
 
 const apiKey = process.env.REACT_APP_API_KEY
 
+const useQueryParams = () => {
+  const {search} = useLocation()
+  const params = new URLSearchParams(search)
+  return {
+    query: params.get('query') || '',
+    page: parseInt(params.get('page') || '1', 10),
+  }
+}
+
 export const useFetchMovies = type => {
   const [apiResponse, setApiResponse] = useState({
     status: statusConstants.inProgress,
     data: null,
   })
-  const {id} = useParams()
-  const {
-    searchedMovie,
-    currentPage,
-    updateTotalPages,
-    updateSearchedMovie,
-    totalPages,
-  } = useContext(SearchedMovieContext)
 
-  // below if condition only for not getting es-lint error and this will not execute in all posible situations
-  if (id === -3.5) {
-    updateSearchedMovie('')
-    console.log(totalPages)
-  }
+  const {id} = useParams()
+  const {query, page} = useQueryParams()
 
   const fetchMovies = useCallback(async () => {
     setApiResponse({
@@ -43,9 +39,9 @@ export const useFetchMovies = type => {
       type === 'popular' || type === 'top_rated' || type === 'upcoming'
 
     if (matchedPath) {
-      url = `https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&language=en-US&page=${currentPage}`
+      url = `https://api.themoviedb.org/3/movie/${type}?api_key=${apiKey}&language=en-US&page=${page}`
     } else if (type === 'search') {
-      url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${searchedMovie}&page=${currentPage}`
+      url = `https://api.themoviedb.org/3/search/movie?api_key=${apiKey}&language=en-US&query=${query}&page=${page}`
     } else {
       url = `https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`
       castUrl = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}&language=en-US`
@@ -53,18 +49,13 @@ export const useFetchMovies = type => {
 
     try {
       const response = await fetch(url)
-
-      if (!response.ok) {
-        throw new Error(response.status)
-      }
+      if (!response.ok) throw new Error(response.status)
 
       const movieData = await response.json()
 
       if (!matchedPath && type !== 'search') {
         const castResponse = await fetch(castUrl)
-        if (!castResponse.ok) {
-          throw new Error(castResponse.status)
-        }
+        if (!castResponse.ok) throw new Error(castResponse.status)
         const casteData = await castResponse.json()
 
         setApiResponse({
@@ -77,19 +68,14 @@ export const useFetchMovies = type => {
           data: movieData,
         })
       }
-
-      if (updateTotalPages && movieData.total_pages) {
-        updateTotalPages(movieData.total_pages)
-      }
     } catch (e) {
       console.log(`Error status code: ${e.message}`)
-
-      setApiResponse(prevState => ({
-        ...prevState,
+      setApiResponse({
         status: statusConstants.failure,
-      }))
+        data: null,
+      })
     }
-  }, [type, id, searchedMovie, currentPage, updateTotalPages])
+  }, [type, id, query, page])
 
   useEffect(() => {
     fetchMovies()
